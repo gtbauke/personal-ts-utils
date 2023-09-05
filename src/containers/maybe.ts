@@ -27,6 +27,22 @@ export class Maybe<T> {
   public static None(): Maybe<unknown> {
     return new Maybe();
   }
+
+  /**
+   * Checks if the `this` object if Some variant.
+   * @returns True if `this` is a Some variant, false otherwise.
+   */
+  public isSome(): boolean {
+    return this.value !== null;
+  }
+
+  /**
+   * Checks if the `this` object if None variant.
+   * @returns True if `this` is a None variant, false otherwise.
+   */
+  public isNone(): boolean {
+    return this.value === null;
+  }
 }
 
 /**
