@@ -5,14 +5,16 @@ import { UnwrappedNoneMaybe } from "./errors/unwrapped-none-maybe";
 import { None, Some } from "./maybe";
 
 describe("Maybe", () => {
-  it("should create a Maybe value of the Some variant", () => {
-    const m = Some(10);
-    expect(m).toHaveProperty("value", 10);
-  });
+  describe("constructors", () => {
+    it("should create a Maybe value of the Some variant", () => {
+      const m = Some(10);
+      expect(m).toHaveProperty("value", 10);
+    });
 
-  it("should create a Maybe value of the None variant", () => {
-    const m = None();
-    expect(m).toHaveProperty("value", null);
+    it("should create a Maybe value of the None variant", () => {
+      const m = None();
+      expect(m).toHaveProperty("value", null);
+    });
   });
 
   describe("isSome", () => {

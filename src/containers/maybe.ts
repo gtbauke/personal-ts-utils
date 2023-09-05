@@ -1,5 +1,4 @@
 /* eslint-disable unicorn/no-null */
-
 import { UnwrappedNoneMaybe } from "./errors/unwrapped-none-maybe";
 
 /**
