@@ -37,7 +37,6 @@ module.exports = {
   rules: {
     "prettier/prettier": "error",
 
-    "unicorn/custom-error-definition": "warn",
     "unicorn/no-unused-properties": "error",
 
     "import/no-mutable-exports": "error",
