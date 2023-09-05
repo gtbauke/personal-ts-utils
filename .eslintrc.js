@@ -80,7 +80,6 @@ module.exports = {
     "dot-notation": "error",
     "eqeqeq": "error",
     "func-style": ["error", "declaration", { allowArrowFunctions: true }],
-    "new-cap": "error",
     "no-caller": "error",
     "no-else-return": "error",
     "no-eval": "error",
