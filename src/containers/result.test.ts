@@ -1,45 +1,36 @@
+/* eslint-disable unicorn/prevent-abbreviations */
 import { describe, it, expect } from "vitest";
 
-import { Left, Right } from "./result";
+import { Err, Ok } from "./result";
 
 describe("Result", () => {
   describe("constructors", () => {
-    it("should create a Result value of the Left variant", () => {
-      const l = Left("foo");
+    it("should create a Result value of the Ok variant", () => {
+      const l = Ok(1);
 
       expect(l).toHaveProperty("tag", "Left");
-      expect(l).toHaveProperty("value", "foo");
+      expect(l).toHaveProperty("value", 1);
     });
 
-    it("should create a Result value of the Right variant", () => {
-      const r = Right(10);
+    it("should create a Result value of the Err variant", () => {
+      const r = Err(new Error("test"));
 
       expect(r).toHaveProperty("tag", "Right");
-      expect(r).toHaveProperty("value", 10);
+      expect(r).toHaveProperty("value", new Error("test"));
     });
   });
 
-  describe("match", () => {
-    it("should execute the onLeft function if the Result is a Left variant", () => {
-      const l = Left<string, number>("foo");
+  describe("try", () => {
+    it("should unwrap the value of the container if it is a Left variant", () => {
+      const l = Ok(1);
 
-      expect(
-        l.match(
-          (value) => value,
-          (value) => value.toString(),
-        ),
-      ).toBe("foo");
+      expect(l.try()).toBe(1);
     });
 
-    it("should execute the onRight function if the Result is a Right variant", () => {
-      const r = Right<string, number>(10);
+    it("should throw the value contained in the Error variant if the container is not a Left variant", () => {
+      const r = Err(new Error("test"));
 
-      expect(
-        r.match(
-          (value) => value,
-          (value) => value.toString(),
-        ),
-      ).toBe("10");
+      expect(() => r.try()).toThrow(new Error("test"));
     });
   });
 });
